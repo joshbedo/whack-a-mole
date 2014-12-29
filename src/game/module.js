@@ -9,6 +9,7 @@ var CollectionView = require('./board/collection-view');
 
 var prevMole,
     prevScore = 0,
+    level = 1,
     speed = 1100;
 
 module.exports = Module.extend({
@@ -47,7 +48,16 @@ module.exports = Module.extend({
 	},
 
 	increaseScore: function() {
-		prevScore += 100;
+		prevScore += 10;
+
+		if (prevScore % 100 === 0) {
+			clearInterval(this.timer);
+			console.log('leveled up! ', level);
+			level++;
+			speed -= 100;
+			this.timer = setInterval(this.renderMole.bind(this), speed);
+		}
+
 		console.log('new score is ', prevScore);
 	},
 
