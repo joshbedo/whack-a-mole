@@ -1,0 +1,9 @@
+@import 'game/mole/styles';
+@import 'game/board/styles';
+
+
+$bgColor: #FF2;
+
+body {
+	background: $bgColor;
+}
