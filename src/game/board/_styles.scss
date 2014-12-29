@@ -1,15 +1,17 @@
 .board {
 	width:390px; 
 	cursor:pointer;
+	margin:50px auto;
 
 	li {
-	  background-color:#ccc;
+	  background-color:#6F6F6F;
 	  display:block;
 	  float:left;
 	  height:50px;
 	  margin:0 0 5px 5px;
 	  text-decoration:none;
 	  width:50px;
+	  border-radius:5px;
 
 	  span{
 	    display:block;
