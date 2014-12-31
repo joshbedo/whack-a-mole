@@ -1,7 +1,10 @@
 var View     = require('src/common/layout-view'),
     template = require('./template.hbs'),
-    BoardView = require('./board/collection-view');
     Radio = require('backbone.radio');
+
+var BoardView = require('./board/collection-view'),
+    ScoreView = require('./score/layout-view'),
+    ScoreModel = require('./score/model');
 
 module.exports = View.extend({
 	template: template,
@@ -20,39 +23,13 @@ module.exports = View.extend({
 		'click @ui.startBtn': 'startGame'
 	},
 
-	onShow: function() {
-		// this._createBoard(4, 7);
-		// this._createScoreBoard();
-	},
-
 	startGame: function() {
 		this.ui.startBtn.hide();
-
-
 		Radio.command('game', 'startGame');
-		// this.board.show(new BoardView());
+
+		this.board.show(new BoardView({ collection: this.collection }));
+		this.scoreBoard.show(new ScoreView({ model: new ScoreModel() }));
 		// this.board.show(new BoardView({ collection: collection }));
 		//this.scoreBoard.show(new ScoreBoardView());
 	}
-	// _createBoard: function(height, width) {
-	// 	// var BoardView = require('./board/view');
-
-	// 	debugger;
-	// 	// var span = document.createElement('span'),
-	// 	//     li   = document.createElement('li'),
-	// 	//     liElements = [];
-
-	// 	// for (var i = 0; i < (height * width); i++) {
-	// 	// 	var cloneLi = li.cloneNode(false),
-	// 	// 	    cloneSpan = span.cloneNode(false);
-
-	// 	// 	cloneLi.appendChild(cloneSpan);
-	// 	// 	this.ui.board.append(cloneLi);
-	// 	// 	liElements.push(cloneLi);
-	// 	// }
-	// },
-
-	// _createScoreBoard: function() {
-	// 	this.ui.scoreBoard.append('level 1');
-	// }
 });
