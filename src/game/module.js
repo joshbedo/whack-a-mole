@@ -22,11 +22,15 @@ module.exports = Module.extend({
 	},
 
 	onStart: function() {
-		this.container.show(new View());
+		for (var i = 0; i < (5 * 4 + 1); i++) {
+			this.collection.add(new Model({ mid: i }));
+		}
+
+		this.container.show(new View({ collection: this.collection }));
 
 		this.channel.comply({
 			startGame: this.startGame,
-			increaseScore: this.increaseScore
+			// increaseScore: this.increaseScore
 		}, this);
 	},
 
@@ -35,31 +39,31 @@ module.exports = Module.extend({
 	},
 
 	startGame: function() {
-		for (var i = 0; i < (5 * 4 + 1); i++) {
-			this.collection.add(new Model({ mid: i }));
-		}
+		// for (var i = 0; i < (5 * 4 + 1); i++) {
+		// 	this.collection.add(new Model({ mid: i }));
+		// }
 
-		this.view = new CollectionView({
-			collection: this.collection
-		});
+		// this.view = new CollectionView({
+		// 	collection: this.collection
+		// });
 
-		this.container.show( this.view );
+		// this.container.show( this.view );
 		this.timer = setInterval(this.renderMole.bind(this), speed);
 	},
 
-	increaseScore: function() {
-		prevScore += 10;
+	// increaseScore: function() {
+	// 	prevScore += 10;
 
-		if (prevScore % 100 === 0) {
-			clearInterval(this.timer);
-			console.log('leveled up! ', level);
-			level++;
-			speed -= 100;
-			this.timer = setInterval(this.renderMole.bind(this), speed);
-		}
+	// 	if (prevScore % 100 === 0) {
+	// 		clearInterval(this.timer);
+	// 		console.log('leveled up! ', level);
+	// 		level++;
+	// 		speed -= 100;
+	// 		this.timer = setInterval(this.renderMole.bind(this), speed);
+	// 	}
 
-		console.log('new score is ', prevScore);
-	},
+	// 	console.log('new score is ', prevScore);
+	// },
 
 	renderMole: function() {
 		if (typeof prevMole !== undefined && prevMole instanceof Model) {
