@@ -16,11 +16,6 @@ app.module('game', {
   container: app.layout.content
 });
 
-// app.module('mole', {
-//   moduleClass: require('src/header/module'),
-//   container: app.layout.header
-// });
-
 // app.module('user', {
 //   moduleClass: require('src/flashes/module'),
 //   container: app.layout.flashes

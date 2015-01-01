@@ -2,10 +2,8 @@ var Radio = require('backbone.radio');
 var Module = require('src/common/module');
 var View = require('./view');
 
-// Game board collection view and collection
 var Model = require('./mole/model');
 var Collection = require('./mole/collection');
-var CollectionView = require('./board/collection-view');
 
 var prevMole,
     prevScore = 0,
@@ -14,7 +12,6 @@ var prevMole,
 
 module.exports = Module.extend({
 	initialize: function() {
-		console.log('game module has started');
 		this.container = this.options.container;
 		this.collection = new Collection();
 		this.channel = Radio.channel('game');
@@ -30,7 +27,7 @@ module.exports = Module.extend({
 
 		this.channel.comply({
 			startGame: this.startGame,
-			// increaseScore: this.increaseScore
+			levelup: this.levelUp
 		}, this);
 	},
 
@@ -39,31 +36,14 @@ module.exports = Module.extend({
 	},
 
 	startGame: function() {
-		// for (var i = 0; i < (5 * 4 + 1); i++) {
-		// 	this.collection.add(new Model({ mid: i }));
-		// }
-
-		// this.view = new CollectionView({
-		// 	collection: this.collection
-		// });
-
-		// this.container.show( this.view );
 		this.timer = setInterval(this.renderMole.bind(this), speed);
 	},
 
-	// increaseScore: function() {
-	// 	prevScore += 10;
-
-	// 	if (prevScore % 100 === 0) {
-	// 		clearInterval(this.timer);
-	// 		console.log('leveled up! ', level);
-	// 		level++;
-	// 		speed -= 100;
-	// 		this.timer = setInterval(this.renderMole.bind(this), speed);
-	// 	}
-
-	// 	console.log('new score is ', prevScore);
-	// },
+	levelUp: function() {
+		clearInterval(this.timer);
+		speed -= 100;
+		this.timer = setInterval(this.renderMole.bind(this), speed);
+	},
 
 	renderMole: function() {
 		if (typeof prevMole !== undefined && prevMole instanceof Model) {

@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var Backbone = require('backbone');
 var Model = require('src/common/model');
+var Radio = require('backbone.radio');
 
 module.exports = Model.extend({
 	defaults: {
@@ -15,14 +16,9 @@ module.exports = Model.extend({
 		this.set('score', prevScore + 10);
 
 		if (this.get('score') % 100 === 0) {
-			// clearInterval(this.timer);
 			this.set('level', prevLevel+1);
-			console.log('leveled up! ', this.get('level'));
-			// speed -= 100;
-			// this.timer = setInterval(this.renderMole.bind(this), speed);
+			Radio.command('game', 'levelup');
 		}
-
-		console.log('new score is ', this.get('score'));
 	}
 
 });

@@ -70,15 +70,15 @@ gulp.task('symlink', function() {
 	  .pipe($.symlink('./node_modules'));
 });
 
-// gulp.task('mocha', ['symlink'], function() {
-// 	return gulp.src([
-// 		'./test/setup/node.js',
-// 		'./test/setup/helpers.js'
-// 		'./test/unit/**/*.js'
-// 	], { read: false })
-// 	  .pipe($.plumber())
-// 	  .pipe($.mocha({ reporter: 'spec' }));
-// });
+gulp.task('mocha', ['symlink'], function() {
+	return gulp.src([
+		'./test/setup/node.js',
+		'./test/setup/helpers.js',
+		'./test/unit/**/*.js'
+	], { read: false })
+	  .pipe($.plumber())
+	  .pipe($.mocha({ reporter: 'spec' }));
+});
 
 // This is where the magic happens!
 gulp.task('build', [
@@ -89,7 +89,7 @@ gulp.task('build', [
 	// 'test'
 ]);
 
-// gulp.task('test', ['mocha']);
+gulp.task('test', ['mocha']);
 
 gulp.task('watch', ['build'], function() {
 	browserSync({
@@ -100,9 +100,9 @@ gulp.task('watch', ['build'], function() {
 
 	getBundler().on('update', function() {
 		gulp.start('scripts');
-		// gulp.start('test');
+		gulp.start('test');
 	});
-	// gulp.watch('./test/**/*.js', ['test']);
+	gulp.watch('./test/**/*.js', ['test']);
 	gulp.watch(['./src/main.scss', './src/**/*.scss'], ['styles']);
 });
 
