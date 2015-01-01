@@ -14,7 +14,6 @@ module.exports = LayoutView.extend({
 	},
 
 	initialize: function(options) {
-		console.log('scoreboard has been initialized!', options);
 		this.channel = Radio.channel('game');
 		
 		this.channel.comply({

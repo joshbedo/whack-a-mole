@@ -29,7 +29,5 @@ module.exports = View.extend({
 
 		this.board.show(new BoardView({ collection: this.collection }));
 		this.scoreBoard.show(new ScoreView({ model: new ScoreModel() }));
-		// this.board.show(new BoardView({ collection: collection }));
-		//this.scoreBoard.show(new ScoreBoardView());
 	}
 });
