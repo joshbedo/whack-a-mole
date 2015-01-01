@@ -1,0 +1,9 @@
+@import 'game/mole/styles';
+@import 'game/board/styles';
+
+
+$bgColor: #22FF92;
+
+body {
+	background: $bgColor;
+}
