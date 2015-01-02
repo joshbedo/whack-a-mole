@@ -60,7 +60,7 @@ function bundle() {
 }
 
 gulp.task('scripts', function() {
-	process.env.BROWSERIFYSWAP_END = 'dist';
+	process.env.BROWSERIFYSWAP_ENV = 'dist';
 	return bundle();
 });
 
@@ -85,8 +85,8 @@ gulp.task('build', [
 	'clean',
 	'html',
 	'styles',
-	'scripts'
-	// 'test'
+	'scripts',
+	'test'
 ]);
 
 gulp.task('test', ['mocha']);
