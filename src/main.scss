@@ -1,9 +1,22 @@
 @import 'game/mole/styles';
 @import 'game/board/styles';
+@import 'game/score/styles';
 
-
-$bgColor: #22FF92;
 
 body {
-	background: $bgColor;
+	background: url(http://3.bp.blogspot.com/_q2DyIrP9k3M/SxVBfNI3dyI/AAAAAAAABig/pXoadPkvbyc/s320/364_tile_Grass.jpg);
+	font-family:'Holtwood One SC', serif;
+}
+
+.headline {
+	color:#60D54D;
+	margin:0 auto;
+	width:50%;
+	letter-spacing:2px;
+	text-align:center;
+	text-shadow:3px 1px 3px #000;
+
+	p {
+		text-transform:uppercase;
+	}
 }
