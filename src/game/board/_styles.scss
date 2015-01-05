@@ -1,32 +1,38 @@
-.board {
-	width:390px; 
-	cursor:pointer;
-	margin:50px auto;
+.game {
+	width:400px;
+	margin:0 auto;
+	.board {
+		display:inline-block;
+		padding:0;
+		width:390px; 
+		cursor:pointer;
+		float:left;
 
-	li {
-	  background-color:#6F6F6F;
-	  display:block;
-	  float:left;
-	  height:50px;
-	  margin:0 0 5px 5px;
-	  text-decoration:none;
-	  width:50px;
-	  border-radius:5px;
+		li {
+		  background-color:#5A4B3A;
+		  display:block;
+		  float:left;
+		  height:50px;
+		  margin:0 0 5px 5px;
+		  text-decoration:none;
+		  width:50px;
+		  border-radius:5px;
 
-	  span{
-	    display:block;
-	    background-color: #4f4f4f;
-	    width: 40px;
-	    height: 40px;
-	    margin: 5px;
-	    border-radius: 20px;
-	    box-shadow: inset 0 3px 4px rgba(0,0,0,.5),
-	    inset 0 0 10px rgba(0,0,0,.5),
-	    0 0 2px 2px rgba(0,0,0,.15),
-	    0 -1px 2px 1px rgba(0,0,0,.25),
-	    0 2px 3px 2px rgba(255,255,255,.5),
-	    0 -2px 10px 1px rgba(255,255,255,.75),
-	    0 2px 10px 3px rgba(0,0,0,.25);
-	  }
+		  span{
+		    display:block;
+		    background-color: #3F3B3B;
+		    width: 40px;
+		    height: 40px;
+		    margin: 5px;
+		    border-radius: 20px;
+		    box-shadow: inset 0 3px 4px rgba(0,0,0,.5),
+		    inset 0 0 10px rgba(0,0,0,.5),
+		    0 0 2px 2px rgba(0,0,0,.15),
+		    0 -1px 2px 1px rgba(0,0,0,.25),
+		    0 2px 3px 2px rgba(255,255,255,.5),
+		    0 -2px 10px 1px rgba(255,255,255,.75),
+		    0 2px 10px 3px rgba(0,0,0,.25);
+		  }
+		}
 	}
 }
