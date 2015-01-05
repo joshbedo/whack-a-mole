@@ -17,7 +17,7 @@ module.exports = ItemView.extend({
 	},
 
 	events: {
-		'click span': 'destroyMole'
+		'click span': 'increaseScore'
 	},
 
 	activateMole: function() {
@@ -25,8 +25,12 @@ module.exports = ItemView.extend({
 	},
 
 	destroyMole: function() {
+		this.$el.removeClass('mole');
+	},
+
+	increaseScore: function() {
 		if (this.$el.hasClass('mole')) {
-			this.$el.removeClass('mole');
+			this.destroyMole();
 			Radio.command('score', 'increaseScore');
 		}
 	}
