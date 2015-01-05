@@ -16,7 +16,7 @@ module.exports = ItemView.extend({
 	},
 
 	events: {
-		'click span': 'increaseScore'
+		'click span': 'destroyMole'
 	},
 
 	activateMole: function() {
@@ -24,12 +24,8 @@ module.exports = ItemView.extend({
 	},
 
 	destroyMole: function() {
-		this.$el.removeClass('mole');
-	},
-
-	increaseScore: function() {
 		if (this.$el.hasClass('mole')) {
-			this.destroyMole();
+			this.$el.removeClass('mole');
 		}
 	}
 
