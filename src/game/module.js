@@ -19,16 +19,8 @@ module.exports = Module.extend({
 	},
 
 	onStart: function() {
-		for (var i = 0; i < (5 * 4 + 1); i++) {
-			this.collection.add(new Model({ mid: i }));
-		}
-
-		this.container.show(new View({ collection: this.collection }));
-
-		this.channel.comply({
-			startGame: this.startGame,
-			levelup: this.levelUp
-		}, this);
+		this._showGameBoard();
+		this._bindChannelCommands();
 	},
 
 	onStop: function() {
@@ -52,6 +44,21 @@ module.exports = Module.extend({
 
 		prevMole = this.collection.findWhere({ mid: Math.floor((Math.random() * (5 * 4))+1) })
 		prevMole.set('active', true);
+	},
+
+	_showGameBoard: function() {
+		for (var i = 0; i < (5 * 4 + 1); i++) {
+			this.collection.add(new Model({ mid: i }));
+		}
+
+		this.container.show(new View({ collection: this.collection }));
+	},
+
+	_bindChannelCommands: function() {
+		this.channel.comply({
+			startGame: this.startGame,
+			levelup: this.levelUp
+		}, this);
 	}
 	
 });
