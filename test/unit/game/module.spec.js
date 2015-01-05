@@ -41,13 +41,52 @@ describe('game/module', function() {
 		});
 	});
 
-	describe('#renderMole', function() {
+	describe('#onStart', function() {
 		beforeEach(function() {
-
+			this.module.onStart();
 		});
 
-		// it('should choose a random mole and set attribute to true', function() {
-		// })
+		it('should create a view and pass the collection', function() {
+			expect(this.View).to.have.been.calledWith({
+				collection: this.collection
+			});
+		});
+
+		it('should show the view inside the container', function() {
+			expect(this.container.show).to.have.been.calledWith(this.view);
+		});
+
+		it('should bind commands on the channel', function() {
+			this.gameChannel = Backbone.Radio.channel('game');
+			stub(this.gameChannel, 'comply');
+			this.module._bindChannelCommands();
+
+			expect(this.gameChannel.comply).to.have.been.called;
+		});
 	});
+
+	describe('#onStop', function() {
+		beforeEach(function() {
+			this.gameChannel = Backbone.Radio.channel('game');
+			stub(this.gameChannel, 'stopComplying');
+			this.module.onStop();
+		});
+
+		it('should clear the commands on the channel', function() {
+			expect(this.gameChannel.stopComplying).to.have.been.called;
+		});
+	});
+
+	// describe('#startGame', function() {
+	// 	beforeEach(function() {
+	// 		stub(this.timer, new Date())
+	// 	});
+
+	// 	it('should start a timer and call #renderMole', function() {
+			
+	// 	})
+	// })
+
+
 
 });
