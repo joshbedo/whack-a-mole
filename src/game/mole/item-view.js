@@ -1,5 +1,6 @@
 var ItemView = require('src/common/item-view'),
-    template = require('./template.hbs');
+    template = require('./template.hbs'),
+    Radio    = require('backbone.radio');
 
 module.exports = ItemView.extend({
 	template: template,
@@ -26,6 +27,7 @@ module.exports = ItemView.extend({
 	destroyMole: function() {
 		if (this.$el.hasClass('mole')) {
 			this.$el.removeClass('mole');
+			Radio.command('score', 'increaseScore');
 		}
 	}
 

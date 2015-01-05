@@ -12,7 +12,7 @@ module.exports = LayoutView.extend({
 	},
 
 	initialize: function(options) {
-		this.channel = Radio.channel('game');
+		this.channel = Radio.channel('score');
 		
 		this.channel.comply({
 			increaseScore: this.increaseScore
