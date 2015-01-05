@@ -1,5 +1,3 @@
-var _ = require('lodash');
-var Backbone = require('backbone');
 var Model = require('src/common/model');
 var Radio = require('backbone.radio');
 

@@ -31,7 +31,7 @@ module.exports = ItemView.extend({
 	increaseScore: function() {
 		if (this.$el.hasClass('mole')) {
 			this.destroyMole();
-			Radio.command('game', 'increaseScore');
+			Radio.command('score', 'increaseScore');
 		}
 	}
 
