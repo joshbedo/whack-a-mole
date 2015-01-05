@@ -6,4 +6,11 @@ $bgColor: #22FF92;
 
 body {
 	background: $bgColor;
+	font-family:'Holtwood One SC', serif;
+}
+
+.headline {
+	margin:0 auto;
+	width:50%;
+	text-align:center;
 }
